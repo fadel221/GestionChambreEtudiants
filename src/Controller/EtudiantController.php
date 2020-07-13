@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EtudiantController extends AbstractController
 {
     /**
-     * @Route("/index", name="etudiant")
+     * @Route("/", name="etudiant")
      */
     public function index()
     {
