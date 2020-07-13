@@ -1,0 +1,54 @@
+body
+{
+      background-image: url("/img/university.jpg");
+       background-attachment: fixed;
+       background-size:cover;
+       background-repeat: no-repeat;
+}
+h1
+{
+    color:#20639b;;
+}
+.container
+{
+    margin: auto;
+    width:30%,
+    position: relative;
+    top:50px;
+}
+form
+{
+}
+.form-group{
+
+}
+.form-group label
+{
+}
+.form-group input
+{
+
+}
+.btn input
+{
+    
+}
+
+span
+{
+    color:red;
+}
+#nav
+{
+    background-color:#20639b;
+    color:white;
+}
+
+#img
+{
+    background-image: url('/img/student.png');
+    background-repeat: no-repeat;
+    width:23%;
+    height: 40px;
+    margin: auto;
+}

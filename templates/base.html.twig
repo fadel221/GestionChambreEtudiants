@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+        {% block stylesheets %}
+         <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        {% endblock %}
+    </head>
+    <body>
+
+    <nav class = "navbar navbar-expand-lg navbar-dark" style="color:white;" id="nav">
+  <a class="navbar-brand" href="http://127.0.0.1:8000/index"> <font style = "horizontal-align: inherit;"> <font style = "horizontal-align: inherit;"> Gestion Chambre </font> </font> </a>
+  <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "# navbarColor01" aria-controls = "navbarColor01" aria-extended = "false" aria-label = "Basculer la navigation ">
+    <span class = "navbar-toggler-icon"> </span>
+  </button>
+
+  <div class = "collapse navbar-collapse" id= "navbarColor01" style="color:white">
+    <div class = "navbar-nav mr-auto" style="color:white">
+      <div class="nav-item dropdown" style="color:white">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Enregistrer</a>
+                <div class="dropdown-menu bg-primary" style="color:white;">
+                    <a href="http://127.0.0.1:8000/etudiant/create" id="Etudiant" class="dropdown-item">Etudiant</a>
+                    <a href="http://127.0.0.1:8000/chambre/create" class="dropdown-item" id="Chambre">Chambre</a>
+                    <a href="http://127.0.0.1:8000/batiment/create" class="dropdown-item" id="Batiment">Batiment</a>
+                    
+                </div>
+            </div>
+                <a href="http://127.0.0.1:8000/etudiant/lister" class="nav-item nav-link" id="list-etudiant">Lister Etudiant</a>
+                <a href="http://127.0.0.1:8000/chambre/liste" class="nav-item nav-link" id="list-room">Lister Chambre</a>
+                    
+                </div>
+            </div>
+            
+        </div>
+</nav>
+
+<div class="container">
+
+        {% block body %}
+            
+        {% endblock %}
+
+</div>
+
+        {% block javascripts %}
+       
+        {% endblock %}
+    </body>
+</html>

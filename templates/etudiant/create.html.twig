@@ -1,0 +1,230 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} New Etudiant!{% endblock %}
+
+{% block body %}
+<div class="container w-50 bg-light p-3" style="margin-top:50px;">
+    
+    <div class="row justify-content-center"><h1>New ROOM</h1><i class="fa fa-bed" aria-hidden="true"</i></h1></div>
+    
+        {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+    <div id="prenom"> 
+            {{ form_row(form.prenom, {'attr': {'placeholder': "Enter firstName"}}) }}
+            <span id="span-prenom">*</span>
+    </div>
+    
+    <div id="nom"> 
+            {{ form_row(form.nom, {'attr': {'placeholder': "Enter Name"}}) }}
+            <span id="span-nom">*</span>
+    </div>
+    
+    <div id="email"> 
+            {{ form_row(form.email, {'attr': {'placeholder': "Enter Email"}}) }}
+            <span id="span-email">*</span>
+    </div>
+    
+    <div id="tel"> 
+            {{ form_row(form.telephone, {'attr': {'placeholder': "Enter telephone"}}) }}
+            <span id="span-tel">*</span>
+    </div>
+
+    <div id="date"> 
+            {{ form_row(form.date_naissance)}}
+            <span id="span-date">*</span>
+    </div>
+           
+        <div class="form-group"> 
+            <label for="type">Type</label>
+            
+            <select id="type" class="form-control">
+            
+            <option>Boursier Logé</option>
+            <option>Boursier Non Logé</option>
+            <option>Non Boursier</option>
+
+            </select>
+            <span id="span-type">*</span>
+    </div>
+
+    <div id="bourse"> 
+            {{ form_row(form.typeBourse)}}
+            <span id="span-bourse">*</span>
+    </div>
+            
+    <div id="chambre"> 
+            {{ form_row(form.chambre, {'attr':{'id':"select-logement"}}) }}
+            <span id="span-chambre">*</span>
+    </div>
+           
+    <div id="adresse"> 
+            {{ form_row(form.adresse, {'attr':{'id':"select-logement"}}) }}
+           <span id="span-adresse">*</span>
+    </div>
+
+            <button type="submit" id="btn-submit" class="btn btn-primary" style="width:100%;" >Enregistrer</button>
+
+        {{form_end(form)}}
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+
+<script> 
+
+var prenom=$('#etudiant_prenom');
+var nom=$('#etudiant_nom');
+var email=$('#etudiant_email');
+var adresse=$('#etudiant_adresse');
+var telephone=$('#etudiant_telephone');
+var date=$('#etudiant_date_naissance');
+var typeBourse=$('#etudiant_typeBourse');
+var bourse=$('#etudiant_typeBourse');
+var chambre=$('#etudiant_chambre');
+var type=$('#type');
+
+function hideChamp()
+{
+    $('#bourse').hide();
+    $('#bourse').hide();
+    $('#adresse').hide();
+    $('#adresse').hide();
+    $('#chambre').hide();
+    
+}
+hideChamp();
+type.click(function(){
+    hideChamp();
+switch(type.val())
+{
+    case 'Boursier Logé': $('#bourse').show();$('#chambre').show();
+    if(typeBourse.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-bourse').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-bourse').html('');
+        }
+
+        if(chambre.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-chambre').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-chambre').html('');
+        }
+
+        break;
+    case 'Boursier Non Logé': $('#bourse').show();$('#adresse').show();
+    chambre.val("");
+    if(typeBourse.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-bourse').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-bourse').html('');
+        }
+
+    if(adresse.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-adresse').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-adresse').html('');
+        }
+        break;
+    case 'Non Boursier': $('#adresse').show();
+    chambre.val("");
+    bourse.val("");
+    if(adresse.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-adresse').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-adresse').html('');
+        }
+        break;
+}
+})
+
+//Validation
+
+$('#btn-submit').click(
+    function (e)
+    {
+        if(prenom.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-prenom').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-prenom').html('');
+        }
+
+        if(nom.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-nom').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-nom').html('');
+        }
+
+        if(email.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-email').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-email').html('');
+        }
+
+        if(telephone.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-tel').html('*Champ Obligatoire');
+        }
+
+        else
+        {
+            $('#span-tel').html('');
+        }
+
+        
+
+        
+
+        if(type.val().trim()=="")
+        {
+            e.preventDefault();
+            $('#span-type').html('*Champ Obligatoire');
+        }
+        else
+        {
+            $('#span-type').html('');
+        }
+
+        
+        
+
+
+})
+
+</script>
+
+{% endblock %}

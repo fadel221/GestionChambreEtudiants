@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChambreController!{% endblock %}
+
+{% block body %}
+<h1>Liste des Batiments</h1>
+<table>
+<tr>
+
+    <th>Numero</th>
+    <th colspand="10">Nom</th>
+
+</tr>
+{% for  batiment in batiments%}
+<tr>
+    <td>{{batiment.id}}</td>
+    <td colspand="10px">{{(batiment.getNomBatiment())}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

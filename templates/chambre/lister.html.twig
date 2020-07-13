@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChambreController!{% endblock %}
+
+{% block body %}
+ <div class="" style="margin-top:70px;background-color:#3498DB">
+
+<table class="table table-sm table-bordered" id="mydatatable">
+<thead>
+        <tr>
+            <th>Matricule</th>
+            <th>Type</th>
+            <th>Batiment</th>
+            <th>Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for chambre in chambres %}
+<tr>
+
+    <td>{{chambre.matricule}}</td>
+    <td>{{chambre.getTypeChambre()}}</td>
+    <td>{{chambre.batiment.id}}</td>
+    <td><a class="btn btn-primary" href="{{path('chambre_update',{id:chambre.id})}}" onclick="return confirm('Etes vous sure de vouloir supprimer cette chambre???'))">Modifier</a>
+    <a class="btn btn-danger" href="{{path('chambre_delete',{id:chambre.id})}}" onclick="return confirm('Etes vous sure de vouloir supprimer cette chambre???'))">Delete</a></td>
+</tr>
+
+{% endfor %}
+        
+    </tbody>
+</table>
+</div>
+
+<script>
+  $(document).ready(function() {
+      $('#mydatatable').DataTable({
+        "paging":true,
+        "pagingType":"full_numbers",
+        "searching":false});
+  });
+</script>
+
+{% endblock %}

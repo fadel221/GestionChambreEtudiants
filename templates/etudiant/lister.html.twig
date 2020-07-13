@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChambreController!{% endblock %}
+
+{% block body %}
+ <div class="" style="margin-top:70px;background-color:#3498DB">
+
+<table class="table table-sm table-bordered" id="mydatatable">
+<thead>
+    <tr>
+
+        <th scope="col">Matricule</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date de Naissance</th>
+        <th scope="col">Telephone</th>
+        <th scope="col">Type de Bourse</th>
+        <th scope="col">N° Chambre</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Modifier</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+
+{% for etudiant in etudiants %}
+<tr>
+    <td>{{etudiant.matricule}}</td>
+    <td>{{etudiant.prenom}}</td>
+    <td>{{etudiant.nom}}</td>
+    <td>{{etudiant.email}}</td>
+    <td>{{etudiant.getDateNaissance()|date('d-m-Y')}}</td>
+    <td>{{etudiant.telephone}}</td>
+    <td>{{etudiant.typeBourse|default('---')}}</td>
+    <td>{{ etudiant.chambre.id|default('---') }}</td>
+    <td>{{etudiant.adresse|default('---')}}</td>
+    <td><a class="btn btn-primary" href="{{path('etudiant_update',{id: etudiant.id})}}" onclick="return confirm('Etes vous sure de vouloir supprimer cette chambre???'))">Update</a></td>
+    
+   
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+
+
+</div>
+
+<script>
+  $(document).ready(function() {
+      $('#mydatatable').DataTable({
+        "paging":true,
+        "pagingType":"full_numbers"});
+  });
+</script>
+
+{% endblock %}

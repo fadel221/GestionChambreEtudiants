@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} New Chambre!{% endblock %}
+
+{% block body %}
+<div class="container w-50 bg-light p-3" style="margin-top:130px;">
+    <div class="row justify-content-center"><h1>New ROOM</h1><i class="fa fa-bed" aria-hidden="true"</i></h1></div>
+    
+        {{form_start(form)}}
+             
+            {{ form_row(form.typeChambre)}}
+            <span id="span-type">*</span>
+
+        
+           {{ form_row(form.batiment)}}
+           
+    
+
+            <button id="submit" type="submit" class="btn btn-primary" style="width:100%;">Enregistrer</button>
+
+        {{form_end(form)}}
+</div>
+
+<script>
+$('#submit').click(function(e){
+    if ($('#chambre_typeChambre').val()=="")
+    {
+        e.preventDefault();
+        $('#span-type').html("Champ Obligatoire");
+    }
+    else
+    {
+        $('#span-type').html("");
+    }
+
+   
+})
+</script>
+
+{% endblock %}
+
