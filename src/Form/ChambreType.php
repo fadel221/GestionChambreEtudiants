@@ -7,6 +7,7 @@ use App\Entity\Chambre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceLabel;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,7 +23,11 @@ class ChambreType extends AbstractType
                     return $batiment->getNomBatiment()." => ".$batiment->getId();
                 }
             ])
-            ->add ('typeChambre')
+            ->add('typeChambre', ChoiceType::class,[ 
+                'choices'  => [
+                    'Unique' =>'Unique' ,
+                    'Double' => 'Double']
+                ])
         
         ;
     }
