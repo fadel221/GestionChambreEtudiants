@@ -70,11 +70,10 @@ class ChambreController extends AbstractController
     {
         $em->remove($chambre);
         $em->flush();
-        return $this->redirectToRoute('chambre_liste');
     }
 
     /**
-     * @Route("/chambre/{id<[0-9]+>}/update", name="chambre_update")
+     * @Route("/chambre/update/{id<[0-9]+>}", name="chambre_update")
      */
 
     public function add(Request $request,EntityManagerInterface $em,Chambre $chambre)
@@ -85,7 +84,6 @@ class ChambreController extends AbstractController
         {
             $em->persist($chambre);
             $em->flush();
-            return $this->redirectToRoute('/chambre/liste');
         }
         return $this->render('chambre/create.html.twig', [
             'chambre' => $chambre,
